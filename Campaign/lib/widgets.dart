@@ -163,18 +163,18 @@ class HeroAnimatingSongCard extends StatelessWidget {
           color: color,
           flattenAnimation: heroAnimation,
           child: SizedBox(
-            height: 250,
+            height: 150,
             child: Stack(
               alignment: Alignment.center,
               children: [
                 // The song title banner slides off in the hero animation.
                 Positioned(
-                  bottom: -80 * heroAnimation.value,
+                  top: 70 * heroAnimation.value,
                   left: 0,
                   right: 0,
                   child: Container(
-                    height: 80,
-                    color: Colors.black12,
+                    height: 40,
+                    color: Colors.white70,
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
@@ -182,26 +182,12 @@ class HeroAnimatingSongCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 21,
                         fontWeight: FontWeight.w500,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                 ),
                 // The play button grows in the hero animation.
-                Padding(
-                  padding:
-                      EdgeInsets.only(bottom: 45) * (1 - heroAnimation.value),
-                  child: Container(
-                    height: playButtonSize,
-                    width: playButtonSize,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black12,
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(Icons.play_arrow,
-                        size: playButtonSize, color: Colors.black38),
-                  ),
-                ),
               ],
             ),
           ),
