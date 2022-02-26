@@ -6,26 +6,26 @@ import 'campaign_detail_tab.dart';
 import 'utils.dart';
 import 'widgets.dart';
 
-class SongsTab extends StatefulWidget {
+class CampaignsTab extends StatefulWidget {
   static const title = 'Campaigns';
   static const androidIcon = Icon(Icons.spa);
-  static const iosIcon = Icon(CupertinoIcons.music_note);
+  static const iosIcon = Icon(CupertinoIcons.arrow_3_trianglepath);
 
-  const SongsTab({Key key, this.androidDrawer}) : super(key: key);
+  const CampaignsTab({Key key, this.androidDrawer}) : super(key: key);
 
   final Widget androidDrawer;
 
   @override
-  _SongsTabState createState() => _SongsTabState();
+  _CampaignsTabState createState() => _CampaignsTabState();
 }
 
-class _SongsTabState extends State<SongsTab> {
+class _CampaignsTabState extends State<CampaignsTab> {
   static const _itemsLength = 50;
 
   final _androidRefreshKey = GlobalKey<RefreshIndicatorState>();
 
   List<MaterialColor> colors;
-  List<String> songNames;
+  List<String> campaignNames;
 
   @override
   void initState() {
@@ -35,14 +35,14 @@ class _SongsTabState extends State<SongsTab> {
 
   void _setData() {
     colors = getRandomColors(_itemsLength);
-    songNames = getRandomNames(_itemsLength);
+    campaignNames = getRandomNames(_itemsLength);
   }
 
   Future<void> _refreshData() {
     return Future.delayed(
       // This is just an arbitrary delay that simulates some network activity.
       const Duration(seconds: 2),
-      () => setState(() => _setData()),
+          () => setState(() => _setData()),
     );
   }
 
@@ -58,15 +58,15 @@ class _SongsTabState extends State<SongsTab> {
       bottom: false,
       child: Hero(
         tag: index,
-        child: HeroAnimatingSongCard(
-          song: songNames[index], //랜덤한 이름 생셩
-          color: Colors.green,
+        child: HeroAnimatingCampaign(
+          campaign: campaignNames[index], //랜덤한 이름 생셩
+          color: Color(0xFF41B06B),
           heroAnimation: AlwaysStoppedAnimation(0),
           onPressed: () => Navigator.of(context).push<void>(
             MaterialPageRoute(
               builder: (context) => SongDetailTab(
                 id: index,
-                song: songNames[index],
+                campaign: campaignNames[index],
                 color: Colors.lightGreenAccent,
               ),
             ),
@@ -92,7 +92,7 @@ class _SongsTabState extends State<SongsTab> {
   Widget _buildAndroid(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(SongsTab.title),
+        title: Text(CampaignsTab.title),
       ),
       drawer: widget.androidDrawer,
       body: RefreshIndicator(
