@@ -136,16 +136,14 @@ class _PressableCardState extends State<PressableCard>
 ///
 /// This is an example of a custom widget that an app developer might create for
 /// use on both iOS and Android as part of their brand's unique design.
-class HeroAnimatingSongCard extends StatelessWidget {
-  HeroAnimatingSongCard(
-      {this.song, this.color, this.heroAnimation, this.onPressed});
+class HeroAnimatingCampaign extends StatelessWidget {
+  HeroAnimatingCampaign(
+      {this.campaign, this.color, this.heroAnimation, this.onPressed});
 
-  final String song;
+  final String campaign;
   final Color color;
   final Animation<double> heroAnimation;
   final VoidCallback onPressed;
-
-  double get playButtonSize => 50 + 50 * heroAnimation.value;
 
   @override
   Widget build(context) {
@@ -167,18 +165,18 @@ class HeroAnimatingSongCard extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                // The song title banner slides off in the hero animation.
+                // The campaign title banner slides off in the hero animation.
                 Positioned(
                   top: 70 * heroAnimation.value,
                   left: 0,
                   right: 0,
                   child: Container(
-                    height: 40,
+                    height: 35,
                     color: Colors.white70,
                     alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      song,
+                      campaign,
                       style: TextStyle(
                         fontSize: 21,
                         fontWeight: FontWeight.w500,
@@ -255,6 +253,8 @@ class SongPlaceholderTile extends StatelessWidget {
     );
   }
 }
+
+
 
 // ===========================================================================
 // Non-shared code below because different interfaces are shown to prompt
