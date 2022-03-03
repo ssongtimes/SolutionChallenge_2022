@@ -22,18 +22,19 @@ class CampaignDetailTab extends StatelessWidget {
             tag: 'dash',
             child: HeroAnimatingCampaign(
               campaign: campaign,
-              color: Colors.green,
+              color: Color(0xFF41B06B),
               heroAnimation: AlwaysStoppedAnimation(1),
             ),
             flightShuttleBuilder: (context, animation, flightDirection,
                 fromHeroContext, toHeroContext) {
               return HeroAnimatingCampaign(
                 campaign: campaign,
-                color: Colors.green,
+                color: Color(0xFF41B06B),
                 heroAnimation: animation,
               );
             },
           ),
+
           Divider(
             height: 0,
             color: Colors.grey,
@@ -58,7 +59,7 @@ class CampaignDetailTab extends StatelessWidget {
                 // Just a bunch of boxes that simulates loading song choices.
                 return Container(
                     child: Text(
-                      '  MM/DD ~ MM/DD \n\n  This is a sample text. Hello world? this app is flutter.\n  nice to meet you.',
+                      '  MM/DD ~ MM/DD \n  This is a sample text. Hello world?\n  a long text very long text apple watermelon white',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
