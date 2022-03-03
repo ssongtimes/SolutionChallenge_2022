@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'widgets.dart';
 
-class SongDetailTab extends StatelessWidget {
-  const SongDetailTab({this.id, this.song, this.color});
+class CampaignDetailTab extends StatelessWidget {
+  const CampaignDetailTab({this.id, this.campaign, this.color});
 
   final int id;
-  final String song;
+  final String campaign;
   final Color color;
 
   Widget _buildBody() {
@@ -20,15 +20,15 @@ class SongDetailTab extends StatelessWidget {
         children: [
           Hero(
             tag: 'dash',
-            child: HeroAnimatingSongCard(
-              song: song,
+            child: HeroAnimatingCampaign(
+              campaign: campaign,
               color: Colors.green,
               heroAnimation: AlwaysStoppedAnimation(1),
             ),
             flightShuttleBuilder: (context, animation, flightDirection,
                 fromHeroContext, toHeroContext) {
-              return HeroAnimatingSongCard(
-                song: song,
+              return HeroAnimatingCampaign(
+                campaign: campaign,
                 color: Colors.green,
                 heroAnimation: animation,
               );
@@ -45,7 +45,7 @@ class SongDetailTab extends StatelessWidget {
                 if (index == 0) {
                   return Padding(
                     padding:
-                        const EdgeInsets.all(10),
+                    const EdgeInsets.all(10),
                     child: Text(
                       'Information',
                       style: TextStyle(
@@ -58,16 +58,16 @@ class SongDetailTab extends StatelessWidget {
                 // Just a bunch of boxes that simulates loading song choices.
                 return Container(
                     child: Text(
-                    '  MM/DD ~ MM/DD \n\n  This is a sample text. Hello world? this app is flutter.\n  nice to meet you.',
-                    style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                ),
-                )
+                      '  MM/DD ~ MM/DD \n\n  This is a sample text. Hello world? this app is flutter.\n  nice to meet you.',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
                 );
-            },
+              },
             ),
-         ),
+          ),
         ],
       ),
     );
@@ -76,7 +76,7 @@ class SongDetailTab extends StatelessWidget {
 
   Widget _buildAndroid(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(song)),
+      appBar: AppBar(title: Text(campaign)),
       body: _buildBody(),
     );
   }
@@ -84,7 +84,7 @@ class SongDetailTab extends StatelessWidget {
   Widget _buildIos(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text(song),
+        middle: Text(campaign),
         previousPageTitle: 'Songs',
       ),
       child: _buildBody(),
