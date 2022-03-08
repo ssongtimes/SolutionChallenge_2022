@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'CampaignInfo.dart';
 
@@ -17,13 +18,18 @@ class CampaignUI extends StatelessWidget {
   final String info;
   final Function()? onPressed;
 
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+    return Container(
+      height: 250,
       child: Container(
+        margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
         decoration: BoxDecoration(
-          color: Color(0xff41B06B),
+          image: DecorationImage(
+            image: AssetImage('assets/images/grandcanyon.jpg'),
+            fit: BoxFit.none,
+          ),
           borderRadius: BorderRadius.circular(15.0),
           border: Border.all(
             color: Color(0xff41B06B),
@@ -31,11 +37,13 @@ class CampaignUI extends StatelessWidget {
         ),
       child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                primary: Colors.transparent,
+            Container(
+              margin: const EdgeInsets.fromLTRB(0,3,0,50),
+              height: 50,
+              width: 550,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                primary: Colors.black26,
                 side: BorderSide(
                   color: Colors.transparent,
               ),
@@ -49,108 +57,66 @@ class CampaignUI extends StatelessWidget {
                         like: like,
                         scrap: scrap,
                         info: info,
-                        )),
+                        campaigndate: 'MM/DD ~ MM/DD',
+                        )
+                  ),
               );
             },
             child: Stack(
               children: [
                 Container(
-                  height: 230,
+                  margin: const EdgeInsets.fromLTRB(0, 2, 0, 2),
+                  width: 550,
+                  height: 40,
+                  child: Text(campaigntitle,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
                   decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/sample.jpg'),
-                      fit: BoxFit.fitWidth,
+                    color: Colors.black26,
                      ),
                   ),
-                  ),
-                  Positioned(
-                    top: 10,
-                    bottom: 180,
-                    child:  Container(
-                      height: 5,
-                      width: 550,
-                      color: Colors.black45,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
+
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(5, 5, 5, 3),
+                            padding: const EdgeInsets.fromLTRB(385, 190, 5, 10),
                             child: Expanded(
-                              child: Text(
-                                campaigntitle,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.favorite_border_rounded,
                                 ),
+                                iconSize: 30,
+                                color: Colors.white,
+                                splashColor: Colors.red,
+                                onPressed: () {},
                               ),
                             ),
+
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(420, 187, 20, 10),
                             child: Expanded(
-                              child: Text(
-                                like,
-                                style: TextStyle(
+                              child: IconButton(
+                                  icon: Icon(
+                                    Icons.star_outline_outlined,
+                                  ),
+                                  iconSize: 35,
                                   color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                            child: Expanded(
-                              child: Text(
-                                    scrap,
-                                    style: TextStyle(
-                                      color: Colors.white,
+                                  splashColor: Colors.yellow,
+                                  onPressed: (){},
                                     ),
                                   ),
                             ),
-                          ),
-                          Text(
-                            info,
-                            style: TextStyle(
-                              color: Colors.white,
-                                  ),
-                                ),
-                              ],
+                          ]
+                      ),
+                    ),
                             ),
+                         ]
                           ),
                         ),
+    );
 
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    height: 100,
-                    width: 200,
-                    color: Colors.transparent,
-                    child: Row(children: <Widget>[
-                       Icon(
-                         Icons.favorite,
-                       ),
-                        Icon(
-                          Icons.star,
-                        ),
-                      ]
-                    ),
-                    ),
-                  ]
-            ),
-
-            )]
-            ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-            );
 
   }
 }
