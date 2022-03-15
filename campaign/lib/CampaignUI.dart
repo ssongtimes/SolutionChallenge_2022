@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//import 'package:like_button/like_button.dart';
 import 'CampaignInfo.dart';
+import 'package:like_button/like_button.dart';
+//import 'package:flutter_button/flutter_button.dart';
+
 
 class CampaignUI extends StatelessWidget {
   const CampaignUI({
@@ -35,10 +39,52 @@ class CampaignUI extends StatelessWidget {
             color: Color(0xff41B06B),
           ),
         ),
-      child: Column(
+
+      child: Stack(
           children: <Widget>[
+            Container( //scrap button
+              margin: const EdgeInsets.fromLTRB(370, 185, 0, 0),
+              child: Expanded(
+                child: LikeButton(
+                  size: 35,
+                  circleColor: const CircleColor(end: Colors.redAccent, start: Colors.red),
+                  bubblesColor: const BubblesColor(
+                    dotPrimaryColor: Colors.red,
+                    dotSecondaryColor: Colors.red
+                  ),
+                  likeBuilder: (bool isLiked){
+                    return Icon(
+                        Icons.favorite_rounded,
+                        color: isLiked? Colors.red : Colors.grey,
+                        size: 34
+                    );
+                  },
+                ),
+              ),
+            ),
+
+            Container( //scrap button
+              margin: const EdgeInsets.fromLTRB(440, 178, 0, 0),
+              child: Expanded(
+                child: LikeButton(
+                  size: 35,
+                  circleColor: const CircleColor(start: Colors.yellow, end: Colors.yellowAccent),
+                  bubblesColor: const BubblesColor(
+                    dotPrimaryColor: Colors.yellow,
+                    dotSecondaryColor: Colors.yellow
+                  ),
+                  likeBuilder: (bool isLiked){
+                    return Icon(
+                      Icons.star_rounded,
+                      color: isLiked? Colors.yellow : Colors.grey,
+                      size: 40
+                    );
+                  },
+                ),
+              ),
+            ),
             Container(
-              margin: const EdgeInsets.fromLTRB(0,3,0,50),
+              margin: const EdgeInsets.fromLTRB(0,0,0,0),
               height: 50,
               width: 550,
               child: TextButton(
@@ -79,35 +125,6 @@ class CampaignUI extends StatelessWidget {
                      ),
                   ),
 
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(385, 190, 5, 10),
-                            child: Expanded(
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.favorite_border_rounded,
-                                ),
-                                iconSize: 30,
-                                color: Colors.white,
-                                splashColor: Colors.red,
-                                onPressed: () {},
-                              ),
-                            ),
-
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(420, 187, 20, 10),
-                            child: Expanded(
-                              child: IconButton(
-                                  icon: Icon(
-                                    Icons.star_outline_outlined,
-                                  ),
-                                  iconSize: 35,
-                                  color: Colors.white,
-                                  splashColor: Colors.yellow,
-                                  onPressed: (){},
-                                    ),
-                                  ),
-                            ),
                           ]
                       ),
                     ),
@@ -116,7 +133,5 @@ class CampaignUI extends StatelessWidget {
                           ),
                         ),
     );
-
-
   }
 }
